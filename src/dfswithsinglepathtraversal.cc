@@ -183,5 +183,6 @@ int main()
     for (int i = topo_list.size()-1; i >= 0; i--){
         std::cout << "now at: " << topo_list[i] << '\n'; 
     }
+
     return 0;
 }
