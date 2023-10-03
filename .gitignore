@@ -33,3 +33,21 @@
 
 # ignore all build files
 src/build/
+
+# Bazel build output directories
+/bazel-*
+
+# Bazel cache
+/bazel-out/
+
+# Bazel test logs
+/bazel-testlogs/
+
+# Generated Bazel files
+/bazel-bin/
+/bazel-out/
+/bazel-testlogs/
+/bazel-workspace/
+
+# Bazel coverage reports
+/coverage/

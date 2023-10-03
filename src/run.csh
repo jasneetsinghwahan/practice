@@ -2,7 +2,8 @@
 
 # Declare an array with the names of the source files
 source_files=(
-  "dfswithsinglepathtraversal.cc"  
+  #"dfswithsinglepathtraversal.cc"  
+  "mazetraversal.cc"
 )
 
 # Iterate over each source file and compile it
