@@ -32,4 +32,4 @@
 *.app
 
 # ignore all build files
-build/
+src/build/
