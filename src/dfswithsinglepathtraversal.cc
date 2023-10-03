@@ -4,6 +4,7 @@
 #include <set>
 #include <vector>
 #include <stack>
+#include <queue>
 class MapSetGraph {
  public:
   MapSetGraph(std::map<int, std::set<int>> &em) : edge_map_(em) {}
@@ -37,6 +38,38 @@ class MapSetGraph {
   std::map<int, std::set<int>> edge_map_;
 };
 
+void 
+MapSetGraph::BFS(int root){
+    std::map<int, int> visited;
+    std::map<int, int> parent;
+    std::map<int, int> distance;
+    std::queue<int> q;
+    q.push(root);
+    visited[root] = 1;
+    distance[root] = 0;
+    while (!q.empty()){
+        int currnode = q.front();
+        std::cout << "visited: " << currnode << std::endl;
+        q.pop();
+        for (int child: edge_map_[currnode]){
+            if (visited[child] != 1){
+                visited[child] = 1;
+                parent[child] = currnode;
+                distance[child] = distance[currnode] + 1;
+                q.push(child);
+            }
+        }
+    }
+    std::cout << "shortest path using BFS " << std::endl;
+    auto itr = edge_map_.begin();
+    for (; itr != edge_map_.end(); itr++){
+        if (itr->first != root){
+            printRoute(root, itr->first, parent);
+            std::cout << "distance: " << distance[itr->first] << " from root for node: " << itr->first << std::endl;
+        }
+    }
+}
+
 std::vector<int> 
 MapSetGraph::TopologicalSort(int root){
   std::map<int, int> marks;
@@ -65,7 +98,6 @@ void MapSetGraph::DFS(int root, int target) {
   std::map<int, int> parent;
   DFS_helper(root, target, marks, parent);
   printRoute(root, target, parent);
-  
 }
 
 void MapSetGraph::printRoute(int root, int target, std::map<int, int> parent){
@@ -143,6 +175,8 @@ int main()
     allPathstracked = true;
     g.DFS_iterative(0, 4, allPathstracked);
     std::map<int, std::set<int>> diredges = {{0, {1,2, 5}},{1, {2, 3}}, {2, {3}}, {3, {4, 6}}, {4, {}}, {5, {2}}, {6, {}}};
+    std::cout << "calling BFS" << std::endl;
+    g.BFS(0);
     MapSetGraph h(diredges);
     std::cout << "calling DFS with topo" << std::endl;
     std::vector<int> topo_list = h.TopologicalSort(0);
