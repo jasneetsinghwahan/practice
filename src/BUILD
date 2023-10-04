@@ -7,9 +7,22 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
-
 cc_library(
     name = "twosum",
     srcs = ["twosum.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "graph_distance_matrix_lib",
+    srcs = ["graph/distance_matrix.cc"],
+    hdrs = ["graph/distance_matrix.h"],
+    visibility = ["//visibility:public"],
+    deps = ["utility"],
+)
+
+cc_library(
+    name = "utility",
+    hdrs = ["utility.h"],
     visibility = ["//visibility:public"],
 )
