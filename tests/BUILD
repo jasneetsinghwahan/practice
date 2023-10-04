@@ -8,3 +8,12 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "tree_tests",
+    srcs = ["tree_tests.cc"],
+    deps = [
+        "//src:treelib",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
