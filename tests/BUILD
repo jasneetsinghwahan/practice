@@ -17,3 +17,12 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "twosum_tests",
+    srcs = ["twosum_tests.cc"],
+    deps = [
+        "//src:twosum",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

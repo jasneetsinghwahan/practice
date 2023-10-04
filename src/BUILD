@@ -6,3 +6,10 @@ cc_library(
     hdrs = ["tree.h"],
     visibility = ["//visibility:public"],
 )
+
+
+cc_library(
+    name = "twosum",
+    srcs = ["twosum.h"],
+    visibility = ["//visibility:public"],
+)
