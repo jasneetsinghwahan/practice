@@ -22,5 +22,5 @@ class Solution {
         bool isPalindrome(ListNode* head);
 
     private:
-        void isPalindrome_aux(ListNode* head, ListNode* &nxtmatch);
+    bool isPalindrome_aux(ListNode* head, ListNode* &revhead);
 };

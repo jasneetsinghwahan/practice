@@ -19,42 +19,42 @@ Solution::reverseList(ListNode *head){
     return head;
 }
 
+/**
+ * 1. find the middle of the linked list
+ * 2. make the last element of the initial half point to null element
+ * 3. reverse the second-half of the list
+ * 4. compare the first-half with reverse second-half
+ * 5/ helper function added so taht memory leakage could be resolved
+*/
 bool 
-Solution::isPalindrome(ListNode* head){
-    ListNode* nxtmatch = nullptr;
-    isPalindrome_aux(head, nxtmatch);
-    if (nxtmatch != nullptr)
-        return false;
-    else
-        return true;
+Solution::isPalindrome(ListNode *head){
+    ListNode *revhead = nullptr;
+    bool rst = isPalindrome_aux(head, revhead);
+
+    while (revhead != nullptr){
+        ListNode *newhead = revhead->next;
+        delete revhead;
+        revhead = newhead;
+    }
+    return rst;
 }
-
-void
-Solution::isPalindrome_aux(ListNode* head, ListNode* &nxtmatch){
-    // base case
-    if (head == nullptr || head->next==nullptr){
-        nxtmatch = nullptr;
-        return;
+bool 
+Solution::isPalindrome_aux(ListNode* head, ListNode* &revhead){
+    if (!head || !head->next) return head;
+    ListNode* slow = head; ListNode* fast = head;
+    while (fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next;
+        if (fast) fast = fast->next;
     }
-
-    ListNode *rhshead = head->next;
-    // essentially traverse the list and also return teh next element to be matched
-    isPalindrome_aux(rhshead, nxtmatch);
-
-    if (head->val == rhshead->val)
-        return;
-    else if (nxtmatch != nullptr){
-        if (head->val == nxtmatch->val){
-            if(nxtmatch->next != nullptr)
-                nxtmatch = nxtmatch->next;
-            else {
-                nxtmatch = nullptr;
-            }
-        }
-        else
-            nxtmatch = rhshead;
+    ListNode* start = slow->next;
+    slow->next = nullptr;
+    ListNode *sechead = reverseList(start);
+    revhead = sechead;
+    while (sechead) {
+        if (head->val != sechead->val) return false;
+        head = head->next;
+        sechead = sechead->next;
     }
-    else
-        nxtmatch = rhshead;
-
+    return true;
 }
