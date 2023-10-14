@@ -26,3 +26,11 @@ cc_library(
     hdrs = ["utility.h"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "recursion_lib",
+    srcs = ["recursion/reverselinkedlist.cc"],
+    hdrs = ["recursion/reverselinkedlist.h"],
+    visibility = ["//visibility:public"],
+    deps = ["utility"],
+)
