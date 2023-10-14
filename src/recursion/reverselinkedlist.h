@@ -19,4 +19,8 @@ struct ListNode {
 class Solution {
     public:
         ListNode *reverseList(ListNode * head);
+        bool isPalindrome(ListNode* head);
+
+    private:
+        void isPalindrome_aux(ListNode* head, ListNode* &nxtmatch);
 };

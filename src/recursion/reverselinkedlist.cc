@@ -18,3 +18,43 @@ Solution::reverseList(ListNode *head){
     head = newhead; 
     return head;
 }
+
+bool 
+Solution::isPalindrome(ListNode* head){
+    ListNode* nxtmatch = nullptr;
+    isPalindrome_aux(head, nxtmatch);
+    if (nxtmatch != nullptr)
+        return false;
+    else
+        return true;
+}
+
+void
+Solution::isPalindrome_aux(ListNode* head, ListNode* &nxtmatch){
+    // base case
+    if (head == nullptr || head->next==nullptr){
+        nxtmatch = nullptr;
+        return;
+    }
+
+    ListNode *rhshead = head->next;
+    // essentially traverse the list and also return teh next element to be matched
+    isPalindrome_aux(rhshead, nxtmatch);
+
+    if (head->val == rhshead->val)
+        return;
+    else if (nxtmatch != nullptr){
+        if (head->val == nxtmatch->val){
+            if(nxtmatch->next != nullptr)
+                nxtmatch = nxtmatch->next;
+            else {
+                nxtmatch = nullptr;
+            }
+        }
+        else
+            nxtmatch = rhshead;
+    }
+    else
+        nxtmatch = rhshead;
+
+}

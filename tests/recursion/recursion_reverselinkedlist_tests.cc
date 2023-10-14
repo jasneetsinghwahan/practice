@@ -69,3 +69,49 @@ TEST(reverselinkedlist, twoelements){
         cpyhead = newhead;
     }
 }
+
+TEST(isPalindrometest, fourlementspalindrome){
+    ListNode *head = new ListNode(1);
+    head->next = new ListNode(2);
+    head->next->next = new ListNode(2);
+    head->next->next->next = new ListNode(1);
+    
+    Solution solution;
+    bool actrst = solution.isPalindrome(head);
+    EXPECT_EQ(actrst, true);
+    while (head != nullptr){
+        ListNode *newhead = head->next;
+        delete head;
+        head = newhead;
+    }
+}
+
+TEST(isPalindrometest, twolementsnotpalindrome){
+    ListNode *head = new ListNode(1);
+    head->next = new ListNode(2);
+    
+    Solution solution;
+    bool actrst = solution.isPalindrome(head);
+    EXPECT_EQ(actrst, false);
+    while (head != nullptr){
+        ListNode *newhead = head->next;
+        delete head;
+        head = newhead;
+    }
+}
+
+TEST(isPalindrometest, fourlementsnotpalindrome){
+    ListNode *head = new ListNode(1);
+    head->next = new ListNode(1);
+    head->next->next = new ListNode(2);
+    head->next->next->next = new ListNode(1);
+    
+    Solution solution;
+    bool actrst = solution.isPalindrome(head);
+    EXPECT_EQ(actrst, false);
+    while (head != nullptr){
+        ListNode *newhead = head->next;
+        delete head;
+        head = newhead;
+    }
+}
