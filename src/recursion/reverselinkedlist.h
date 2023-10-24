@@ -20,6 +20,7 @@ class Solution {
     public:
         ListNode *reverseList(ListNode * head);
         bool isPalindrome(ListNode* head);
+        ListNode* removeElements(ListNode *, int val);
 
     private:
     bool isPalindrome_aux(ListNode* head, ListNode* &revhead);

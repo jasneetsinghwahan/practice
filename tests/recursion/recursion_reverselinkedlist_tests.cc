@@ -172,3 +172,100 @@ TEST(isPalindrometest, longsevenseqpalin){
         head = newhead;
     }
 }
+
+TEST(removeElem_Test, nullelement){
+    ListNode *rtnres;
+    Solution s;
+    rtnres = s.removeElements(nullptr, 1);
+    EXPECT_EQ(rtnres, nullptr);
+}
+
+// Function to compare two linked lists
+bool areLinkedListsEqual(ListNode* l1, ListNode* l2) {
+    while (l1 && l2) {
+        if (l1->val != l2->val) {
+            return false;
+        }
+        l1 = l1->next;
+        l2 = l2->next;
+    }
+    return l1 == nullptr && l2 == nullptr;
+}
+
+TEST(removeElem_Test, oneelementnotmatch){
+    ListNode *rtnres;
+    std::vector<int> vec = {8};
+    ListNode *head;
+    head = new ListNode(vec[0]);
+    for (int i = 1; i < vec.size(); i++){
+        head = new ListNode(vec[i], head);
+    }
+    Solution s;
+    int val = 2;
+    rtnres = s.removeElements(head, val);
+    ASSERT_TRUE(areLinkedListsEqual(head, rtnres));
+    while (head != nullptr){
+        ListNode *newhead = head->next;
+        delete head;
+        head = newhead;
+    }
+}
+
+TEST(removeElem_Test, oneelementeq){
+    ListNode *rtnres;
+    std::vector<int> vec = {8};
+    ListNode *head;
+    head = new ListNode(vec[0]);
+    for (int i = 1; i < vec.size(); i++){
+        head = new ListNode(vec[i], head);
+    }
+    Solution s;
+    int val = 8;
+    rtnres = s.removeElements(head, val);
+    ASSERT_FALSE(areLinkedListsEqual(head, rtnres));
+    while (rtnres != nullptr){
+        ListNode *newhead = head->next;
+        delete head;
+        head = newhead;
+    }
+}
+
+TEST(removeElem_Test, tc1){
+    ListNode *rtnres;
+    ListNode *head;
+    ListNode *exphead;
+    std::vector<int> vec = {1,2,6,3,4,5,6};
+    std::vector<int> rtnvec = {1,2,3,4,5};
+    head = new ListNode(vec[0]);
+    for (int i = 1; i < vec.size(); i++){
+        head = new ListNode(vec[i], head);
+    }
+    Solution s;
+    int val = 6;
+    exphead = new ListNode(rtnvec[0]);
+    for (int i = 1; i < rtnvec.size(); i++){
+        exphead = new ListNode(rtnvec[i], exphead);
+    }
+    rtnres = s.removeElements(head, val);
+    ASSERT_TRUE(areLinkedListsEqual(exphead, rtnres));
+    while (rtnres != nullptr){
+        ListNode *newhead = rtnres->next;
+        delete rtnres;
+        rtnres = newhead;
+    }
+}
+
+TEST(removeElem_Test, mulelem_allsame){
+    ListNode *rtnres;
+    ListNode *head;
+    ListNode *exphead;
+    std::vector<int> vec = {7,7,7,7};
+    head = new ListNode(vec[0]);
+    for (int i = 1; i < vec.size(); i++){
+        head = new ListNode(vec[i], head);
+    }
+    Solution s;
+    int val = 7;
+    rtnres = s.removeElements(head, val);
+    EXPECT_EQ(rtnres, nullptr);
+}

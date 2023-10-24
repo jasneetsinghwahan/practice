@@ -20,6 +20,7 @@ Solution::reverseList(ListNode *head){
 }
 
 /**
+ * leetcode 234. palindrome linked list using recursion
  * 1. find the middle of the linked list
  * 2. make the last element of the initial half point to null element
  * 3. reverse the second-half of the list
@@ -57,4 +58,44 @@ Solution::isPalindrome_aux(ListNode* head, ListNode* &revhead){
         sechead = sechead->next;
     }
     return true;
+}
+
+/**
+ * leetcode 203. recursion + linked list
+ * Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+ * 
+*/
+ListNode* 
+Solution::removeElements(ListNode *head, int val){
+    // base case
+    if (head == nullptr || head->next == nullptr){
+        if (head){
+            if (head->val == val){
+                delete head;
+                return nullptr;
+            }
+        }
+        else
+            return head;
+    }
+
+    head->next  = removeElements(head->next, val);
+
+    ListNode *onemorehead = head;
+    if (head->val == val){
+        // remove this node
+        // two case
+        // case 1: if current node is the last node
+        if (head->next == nullptr){
+            head = nullptr;
+            delete onemorehead;
+        }
+        else {
+            // case 2: if current node is not the last node 
+            head = head->next;
+            delete onemorehead;
+        }
+    }
+
+    return head;
 }
