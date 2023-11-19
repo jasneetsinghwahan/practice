@@ -35,3 +35,12 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "missingnum_tests",
+    srcs = ["missingnum_tests.cc"],
+    deps = [
+        "//src:missingnum",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

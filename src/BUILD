@@ -40,3 +40,9 @@ cc_library(
     hdrs = ["weird_algo.h"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "missingnum",
+    hdrs = ["missingnumber.h"],
+    visibility = ["//visibility:public"],
+)
