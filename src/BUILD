@@ -34,3 +34,9 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = ["utility"],
 )
+
+cc_library(
+    name = "weirdalgo",
+    hdrs = ["weird_algo.h"],
+    visibility = ["//visibility:public"],
+)
