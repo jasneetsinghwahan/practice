@@ -44,3 +44,21 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "introductory_cses_tests",
+    srcs = ["introductory_cses_tests.cc"],
+    deps = [
+        "//src:introductoryproblems_cses",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "arr_and_strtests",
+    srcs = ["arr_and_strtests.cc"],
+    deps = [
+        "//src/arrays_and_strings:arrays_and_stringslib",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

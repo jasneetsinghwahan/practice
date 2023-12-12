@@ -93,6 +93,7 @@ GraphMaze::gridhaspath(std::pair<int, int> start, std::pair<int, int> finish){
         std::map<int, int> neighbor = findneighbors(currnode);
         auto itr = neighbor.begin();
         for (; itr != neighbor.end(); itr++){
+            // left neighbor
             if (itr->first == 0 && itr->second != 0) {
                 if (visited[INDEX_LEFTNEIGHBOR(currnode)] != 1){
                     visited[INDEX_LEFTNEIGHBOR(currnode)] = 1;
@@ -102,6 +103,7 @@ GraphMaze::gridhaspath(std::pair<int, int> start, std::pair<int, int> finish){
                         found = true;
                 }
             }
+            // top neighbor
             if (itr->first == 1 && itr->second != 0) {
                 if (visited[INDEX_UPNEIGHBOR(currnode)] != 1){
                     visited[INDEX_UPNEIGHBOR(currnode)] = 1;
@@ -111,6 +113,7 @@ GraphMaze::gridhaspath(std::pair<int, int> start, std::pair<int, int> finish){
                         found = true;
                 }
             }
+            // right neighbor
             if (itr->first == 2 && itr->second != 0) {
                 if (visited[INDEX_RIGHTNEIGHBOR(currnode)] != 1){
                     visited[INDEX_RIGHTNEIGHBOR(currnode)] = 1;
@@ -120,6 +123,7 @@ GraphMaze::gridhaspath(std::pair<int, int> start, std::pair<int, int> finish){
                         found = true;
                 }
             }
+            // down neighbor
             if (itr->first == 3 && itr->second != 0) {
                 if (visited[INDEX_DOWNNEIGHBOR(currnode)] != 1){
                     visited[INDEX_DOWNNEIGHBOR(currnode)] = 1;

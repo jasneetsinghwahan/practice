@@ -46,3 +46,9 @@ cc_library(
     hdrs = ["missingnumber.h"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "introductoryproblems_cses",
+    hdrs = ["repetitions_cses.h"],
+    visibility = ["//visibility:public"],
+)
