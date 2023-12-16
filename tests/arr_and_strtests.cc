@@ -32,3 +32,12 @@ TEST(maxconsecutiveonestest, firsttest){
     std::cout << "test 2" << std::endl;
     EXPECT_EQ(t.longestOnes(s,k),10);
 }
+
+TEST(maximum_average_subarray, firsttest){
+    mystrings t;
+    std::vector<int> s = {0,4,0,3,2};
+    int k = 1;
+    
+    std::cout << "test 1" << std::endl;
+    EXPECT_EQ(t.findMaxAverage(s,k),4);
+}
