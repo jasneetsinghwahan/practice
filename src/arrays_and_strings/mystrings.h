@@ -8,4 +8,7 @@ class mystrings{
     double findMaxAverage(std::vector<int>& nums, int k);
     int findMiddleIndex(std::vector<int>& nums);
     int findMiddleIndex_alt(std::vector<int>& nums);
+    int flippinggame(int k, std::vector<int> nums);
+    int waysToSplitArray(std::vector<int>& nums);
+    int waysToSplitArray_alt(std::vector<int>& nums);
 };
