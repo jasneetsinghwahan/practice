@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <chrono>
+using namespace std;
 
 #include "gtest/gtest.h"
 #include "gmock/gmock-more-matchers.h"
@@ -40,4 +42,43 @@ TEST(maximum_average_subarray, firsttest){
     
     std::cout << "test 1" << std::endl;
     EXPECT_EQ(t.findMaxAverage(s,k),4);
+}
+
+TEST(findMiddleIndextest, firsttest){
+    mystrings t;
+    std::vector<int> s = {2,3,-1,8,4};
+    int exp = 3;
+    auto start = chrono::high_resolution_clock::now();
+    int rst = t.findMiddleIndex(s);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst,exp);
+    std::cout << "alternate" << std::endl;
+    start = chrono::high_resolution_clock::now();
+    rst = t.findMiddleIndex_alt(s);
+    stop = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+    std::cout << "2nd method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst,exp);
+}
+
+TEST(findMiddleIndextest, secondtest){
+    mystrings t;
+    std::vector<int> s = {1,-1,4};
+    int exp = 2;
+    auto start = chrono::high_resolution_clock::now();
+    int rst = t.findMiddleIndex(s);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst,exp);
+    std::cout << "alternate" << std::endl;
+    start = chrono::high_resolution_clock::now();
+    rst = t.findMiddleIndex_alt(s);
+    stop = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+    std::cout << "2nd method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst,exp);
+    
 }

@@ -22,6 +22,7 @@ using namespace std;
  * 1 <= nums.length <= 105
  * nums[i] is either 0 or 1.
  * 0 <= k <= nums.length
+ * time cokmplexity is O(n) or 2.O(n) because right also traverse from 0th iindex to (k-1)th idex once and same for left index
 */
 
 int 
@@ -34,7 +35,6 @@ mystrings::longestOnes(vector<int>& nums, int k) {
             cur++;
         }
         else if(nums[right] == 0){
-            //kctr++;
             longest = (longest < cur)? cur : longest;
             while(nums[left] != 0){
                 left ++;
