@@ -1,13 +1,20 @@
 /***
- * Fully associative cache with LRU replacement policy
+ * Caches with various replacement policies
+ * TODO: benchmark both these to see which runs faster
 */
 
 #include <unordered_map>
+#include <unordered_set>
 #include <stddef.h>     // size_t
+#include <vector>
+#include <algorithm>    // std::fill
+#include <cstdint> // uint64_t
 
 
-// copied from: https://www.enjoyalgorithms.com/blog/implement-least-recently-used-cache
-
+/***
+ * Fully associative cache with LRU replacement policy
+*/
+// modified from: https://www.enjoyalgorithms.com/blog/implement-least-recently-used-cache
 class LRUCache {
     private:
     struct node {
@@ -47,6 +54,30 @@ class LRUCache {
         delete tail_;
     };
 };
+/***
+ * Fully associative cache with Tree-based pseudo LRU replacement policy
+*/
 
+class treepseudoLRUCache {
+    private:
+    std::unordered_set<int> hashset_;   // used to return O(1) for block lookup
+    std::vector<int> idxkeymaparr_; // maps way# to the array idx, used to point the key to be replaced in hashset_ 
+    uint64_t bvec_; // tree-pseudo LRU
+    size_t NWAY_;
+    size_t count_;    // keeps count of filled-up
+    void updbitvec_(void);
+    void appendvec_(size_t level, size_t idx, uint64_t &updbevc_);
+    size_t getwaynum(void);
 
+    public:
+    treepseudoLRUCache(int NWAY){ // constructor
+        NWAY_ = NWAY;
+        count_ = 0; 
+        bvec_ = 0;
+        idxkeymaparr_.resize(NWAY);
+    };
 
+    bool get(int);
+    void put(int key, int value);
+    size_t fillcnt(void);
+};

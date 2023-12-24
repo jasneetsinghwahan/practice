@@ -29,6 +29,31 @@ TEST(cachetest, isitworking){
 
 }
 
+TEST(pseudocachetest, chkputwoevict){
+    treepseudoLRUCache t(4);
+
+    t.put(5,5);
+    t.put(3,3);
+    t.put(1,1);
+    t.put(2,2);
+    size_t rst = t.fillcnt();
+    EXPECT_EQ(rst,4);
+
+}
+TEST(pseudocachetest, chkputwevict){
+    treepseudoLRUCache t(4);
+
+    t.put(5,5);
+    t.put(3,3);
+    t.put(1,1);
+    t.put(2,2);
+    t.put(6,6);
+    bool rst = t.get(5);
+    EXPECT_EQ(rst,false);
+    rst = t.get(6);
+    EXPECT_EQ(rst,true);
+}
+
 //TEST(findMiddleIndextest, firsttest){
 //    mystrings t;
 //    std::vector<int> s = {2,3,-1,8,4};
