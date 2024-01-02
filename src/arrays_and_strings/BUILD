@@ -5,7 +5,8 @@ cc_library(
     "lc643_maximum_average_subarray_1.cc",
     "findMiddleIndex.cc",
     "codeforces_cont327_flippinggame.cc",
-    "waysToSplitArray.cc"],
+    "waysToSplitArray.cc",
+    "lc238_product_of_array_except_self.cc"],
     hdrs = ["mystrings.h"],
     visibility = ["//visibility:public"],
 )

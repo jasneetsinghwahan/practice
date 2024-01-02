@@ -11,4 +11,5 @@ class mystrings{
     int flippinggame(int k, std::vector<int> nums);
     int waysToSplitArray(std::vector<int>& nums);
     int waysToSplitArray_alt(std::vector<int>& nums);
+    std::vector<int> productExceptSelf(std::vector<int>& nums);
 };
