@@ -12,4 +12,6 @@ class mystrings{
     int waysToSplitArray(std::vector<int>& nums);
     int waysToSplitArray_alt(std::vector<int>& nums);
     std::vector<int> productExceptSelf(std::vector<int>& nums);
+    int numOfSubarrays_1stmethod(std::vector<int>& arr);
+    int numOfSubarrays_2ndmethod(std::vector<int>& arr);
 };

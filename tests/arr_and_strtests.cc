@@ -152,3 +152,26 @@ TEST(product_of_array_except_self_test, secondtest){
     std::cout << "2nd method time:" << duration.count() << std::endl;
     EXPECT_THAT(rst,::testing::ElementsAreArray(exp));
 }
+
+TEST(number_of_sub_array_with_odd_sum_test, firsttest_firstmethod){
+    mystrings t;
+    std::vector<int> s = {1,3,5};
+    int exp = 4;
+    auto start = chrono::high_resolution_clock::now();
+    int rst = t.numOfSubarrays_1stmethod(s);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst,exp);
+}
+TEST(number_of_sub_array_with_odd_sum_test, firsttest_secondmethod){
+    mystrings t;
+    std::vector<int> s = {1,3,5};
+    int exp = 4;
+    auto start = chrono::high_resolution_clock::now();
+    int rst = t.numOfSubarrays_2ndmethod(s);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst,exp);
+}
