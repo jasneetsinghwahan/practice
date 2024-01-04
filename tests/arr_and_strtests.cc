@@ -175,3 +175,63 @@ TEST(number_of_sub_array_with_odd_sum_test, firsttest_secondmethod){
     std::cout << "1st method time:" << duration.count() << std::endl;
     EXPECT_EQ(rst,exp);
 }
+TEST(getAverages_test, firsttest){
+    mystrings t;
+    std::vector<int> s = {7,4,3,9,1,8,5,2,6};
+    int k = 3;
+    std::vector<int> exp = {-1,-1,-1,5,4,4,-1,-1,-1};
+    auto start = chrono::high_resolution_clock::now();
+    std::vector<int> rst = t.getAverages(s,k);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_THAT(rst,::testing::ElementsAreArray(exp));
+}
+TEST(getAverages_test, secondtest){
+    mystrings t;
+    std::vector<int> s = {10000};
+    int k = 0;
+    std::vector<int> exp = {10000};
+    auto start = chrono::high_resolution_clock::now();
+    std::vector<int> rst = t.getAverages(s,k);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_THAT(rst,::testing::ElementsAreArray(exp));
+}
+TEST(numSubarrayProductLessThanK_test, firsttest){
+    mystrings t;
+    std::vector<int> s = {10,5,2,6};
+    int k = 100;
+    int exp = 8;
+    auto start = chrono::high_resolution_clock::now();
+    int rst = t.numSubarrayProductLessThanK(s,k);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst, exp);
+}
+TEST(numSubarrayProductLessThanK_test, secondtest){
+    mystrings t;
+    std::vector<int> s = {10,9,10,4,3,8,3,3,6,2,10,10,9,3};
+    int k = 19;
+    int exp = 18;
+    auto start = chrono::high_resolution_clock::now();
+    int rst = t.numSubarrayProductLessThanK(s,k);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_EQ(rst, exp);
+}
+TEST(reverseWords_test, firsttest){
+    mystrings t;
+    std::string s{"Let's take LeetCode contest"};
+    int k = 19;
+    std::string exp{"s'teL ekat edoCteeL tsetnoc"};
+    auto start = chrono::high_resolution_clock::now();
+    std::string rst = t.reverseWords(s);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
+    std::cout << "1st method time:" << duration.count() << std::endl;
+    EXPECT_THAT(rst, ::testing::StrEq(exp));
+}

@@ -7,7 +7,10 @@ cc_library(
     "codeforces_cont327_flippinggame.cc",
     "waysToSplitArray.cc",
     "lc238_product_of_array_except_self.cc",
-    "lc1524_number_of_sub-array_with_odd_sum.cc"],
+    "lc1524_number_of_sub-array_with_odd_sum.cc",
+    "kradiussubarray.cc",
+    "numSubarrayProductLessThanK.cc",
+    "reverseWords.cc"],
     hdrs = ["mystrings.h"],
     visibility = ["//visibility:public"],
 )
