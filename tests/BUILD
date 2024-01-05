@@ -62,3 +62,11 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+cc_test(
+    name = "hashtests",
+    srcs = ["hashtests.cc"],
+    deps = [
+        "//src/hashing:hashinglib",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
