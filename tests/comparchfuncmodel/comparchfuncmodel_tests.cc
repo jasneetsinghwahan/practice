@@ -1,10 +1,17 @@
 #include "src/comparchfuncmodel/lrucache.h"
+#include "src/comparchfuncmodel/arith.h"
 
 #include <vector>
 #include <string>
 #include <iostream>
 #include <chrono>
 using namespace std;
+
+#include <cassert>
+#include <cstdint>
+#include <climits>
+#include <cstddef>
+#include <type_traits>
 
 #include "gtest/gtest.h"
 #include "gmock/gmock-more-matchers.h"
@@ -54,87 +61,12 @@ TEST(pseudocachetest, chkputwevict){
     EXPECT_EQ(rst,true);
 }
 
-//TEST(findMiddleIndextest, firsttest){
-//    mystrings t;
-//    std::vector<int> s = {2,3,-1,8,4};
-//    int exp = 3;
-//    auto start = chrono::high_resolution_clock::now();
-//    int rst = t.findMiddleIndex(s);
-//    auto stop = chrono::high_resolution_clock::now();
-//    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-//    std::cout << "1st method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//    std::cout << "alternate" << std::endl;
-//    start = chrono::high_resolution_clock::now();
-//    rst = t.findMiddleIndex_alt(s);
-//    stop = chrono::high_resolution_clock::now();
-//    duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-//    std::cout << "2nd method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//}
-//
-//TEST(findMiddleIndextest, secondtest){
-//    mystrings t;
-//    std::vector<int> s = {1,-1,4};
-//    int exp = 2;
-//    auto start = chrono::high_resolution_clock::now();
-//    int rst = t.findMiddleIndex(s);
-//    auto stop = chrono::high_resolution_clock::now();
-//    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-//    std::cout << "1st method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//    std::cout << "alternate" << std::endl;
-//    start = chrono::high_resolution_clock::now();
-//    rst = t.findMiddleIndex_alt(s);
-//    stop = chrono::high_resolution_clock::now();
-//    duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-//    std::cout << "2nd method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//}
-//
-//TEST(flippinggametest, firsttest){
-//    mystrings t;
-//    std::vector<int> s = {1,0,0,1,0};
-//    int exp = 4;
-//    auto start = chrono::high_resolution_clock::now();
-//    int rst = t.flippinggame(s.size(), s);
-//    auto stop = chrono::high_resolution_clock::now();
-//    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-//    std::cout << "1st method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//}
-//TEST(flippinggametest, secondtest){
-//    mystrings t;
-//    std::vector<int> s = {1,0,0,1};
-//    int exp = 4;
-//    auto start = chrono::high_resolution_clock::now();
-//    int rst = t.flippinggame(s.size(), s);
-//    auto stop = chrono::high_resolution_clock::now();
-//    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-//    std::cout << "1st method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//}
-//
-//TEST(waysToSplitArraytest, firsttest){
-//    mystrings t;
-//    std::vector<int> s = {10,4,-8,7};
-//    int exp = 2;
-//    auto start = chrono::high_resolution_clock::now();
-//    int rst = t.waysToSplitArray(s);
-//    auto stop = chrono::high_resolution_clock::now();
-//    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-//    std::cout << "1st method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//}
-//
-//TEST(waysToSplitArraytest, secondtest){
-//    mystrings t;
-//    std::vector<int> s = {10,4,-8,7};
-//    int exp = 2;
-//    auto start = chrono::high_resolution_clock::now();
-//    int rst = t.waysToSplitArray_alt(s);
-//    auto stop = chrono::high_resolution_clock::now();
-//    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-//    std::cout << "1st method time:" << duration.count() << std::endl;
-//    EXPECT_EQ(rst,exp);
-//}
+TEST(arithtest, firsttest){
+    arith t;
+    uint64_t a = (1ULL << 32) + (1ULL << 51);   // 2251804108652544
+    uint64_t b = (1ULL << 18) + (1ULL << 60);   // 1152921504607109120
+
+    uint64_t rst = t.mulhu(a,b); // 1125899906842624
+    uint64_t exp = 1125899906842624;
+    EXPECT_EQ(rst,exp);
+}
