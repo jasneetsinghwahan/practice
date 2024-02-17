@@ -175,6 +175,7 @@ TEST(number_of_sub_array_with_odd_sum_test, firsttest_secondmethod){
     std::cout << "1st method time:" << duration.count() << std::endl;
     EXPECT_EQ(rst,exp);
 }
+
 TEST(getAverages_test, firsttest){
     mystrings t;
     std::vector<int> s = {7,4,3,9,1,8,5,2,6};
