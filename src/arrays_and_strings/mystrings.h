@@ -13,6 +13,9 @@ class mystrings{
     int waysToSplitArray_alt(std::vector<int>& nums);
     std::vector<int> productExceptSelf(std::vector<int>& nums);
     int numOfSubarrays_1stmethod(std::vector<int>& arr);
+    std::vector<int> getAverages(std::vector<int>& nums, int k);
+    int numSubarrayProductLessThanK(std::vector<int>& nums, int k);
+    std::string reverseWords(std::string s);
     int numOfSubarrays_2ndmethod(std::vector<int>& arr);
     std::vector<int> getAverages(std::vector<int>& nums, int k);
     int numSubarrayProductLessThanK(std::vector<int>& nums, int k);

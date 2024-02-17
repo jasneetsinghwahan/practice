@@ -12,7 +12,10 @@ cc_library(
     "numSubarrayProductLessThanK.cc",
     "reverseWords.cc",
     "lc525_contiguous_array.cc",
-    "lc1371_findTheLongestSubstringContainingVowelsEvenCount.cc"],
+    "lc1371_findTheLongestSubstringContainingVowelsEvenCount.cc",
+    "kradiussubarray.cc",
+    "numSubarrayProductLessThanK.cc",
+    "reverseWords.cc"],
     hdrs = ["mystrings.h"],
     visibility = ["//visibility:public"],
 )
