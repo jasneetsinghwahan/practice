@@ -10,7 +10,9 @@ cc_library(
     "lc1524_number_of_sub-array_with_odd_sum.cc",
     "kradiussubarray.cc",
     "numSubarrayProductLessThanK.cc",
-    "reverseWords.cc"],
+    "reverseWords.cc",
+    "lc525_contiguous_array.cc",
+    "lc1371_findTheLongestSubstringContainingVowelsEvenCount.cc"],
     hdrs = ["mystrings.h"],
     visibility = ["//visibility:public"],
 )

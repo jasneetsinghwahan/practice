@@ -17,4 +17,6 @@ class mystrings{
     std::vector<int> getAverages(std::vector<int>& nums, int k);
     int numSubarrayProductLessThanK(std::vector<int>& nums, int k);
     std::string reverseWords(std::string s);
+    int findMaxLength(std::vector<int>& nums);
+    int findTheLongestSubstring(std::string s);
 };
