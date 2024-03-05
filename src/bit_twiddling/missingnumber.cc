@@ -7,14 +7,14 @@
 #include <assert.h>
 #include <algorithm>
 #include <unordered_set>
-
-class missingnumber {
-    public:
-        int missingnum(int n, std::vector<int> nums);
-        std::vector<int> two_missingnum(int, std::vector<int>);
-        std::vector<int> three_missingnum(int, std::vector<int>);
-        std::vector<int> nmissingnum(std::vector<int>);
-};
+#include "bit_twiddling.h"
+//class missingnumber {
+//    public:
+//        int missingnum(int n, std::vector<int> nums);
+//        std::vector<int> two_missingnum(int, std::vector<int>);
+//        std::vector<int> three_missingnum(int, std::vector<int>);
+//        std::vector<int> nmissingnum(std::vector<int>);
+//};
 
 
 int 

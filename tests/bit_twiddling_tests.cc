@@ -1,6 +1,10 @@
-#include "src/missingnumber.h"
+#include "src/bit_twiddling/bit_twiddling.h"
 
 #include <vector>
+#include <string>
+#include <iostream>
+#include <chrono>
+using namespace std;
 
 #include "gtest/gtest.h"
 #include "gmock/gmock-more-matchers.h"
@@ -9,6 +13,16 @@ using ::testing::ElementsAreArray;
 using ::testing::ElementsAre;
 using ::testing::UnorderedElementsAreArray;
 using ::testing::UnorderedElementsAre;
+
+TEST(min_max_test, howdoesitwork){
+    bittwiddles bt;
+    int a = 5, b = 3;
+    int exp = bt.min_max(a,b);
+    int rst = (a<b) ? a : b;
+
+    EXPECT_EQ(rst, exp);
+}
+
 
 TEST(missingnumtest, isitworking){
     missingnumber w;

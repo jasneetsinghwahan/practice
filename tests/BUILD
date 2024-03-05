@@ -71,3 +71,11 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+cc_test(
+    name = "bit_twiddling_tests",
+    srcs = ["bit_twiddling_tests.cc"],
+    deps = [
+        "//src/bit_twiddling:bit_twiddling_lib",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
